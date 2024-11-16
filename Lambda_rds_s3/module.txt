@@ -1,0 +1,13 @@
+module "rds_export_to_s3" {
+  source = "github.com/binbashar/terraform-aws-rds-export-to-s3"
+
+  database_names            = "mydatabase"
+  snapshots_bucket_name     = "my-s3-bucket"
+  snapshots_bucket_prefix    = "exports/"
+  create_customer_kms_key   = true
+  create_notifications_topic = true
+  notifications_topic_arn    = null  # Automatically create a new topic
+  tags                       = {
+    Environment = "production"
+  }
+}
